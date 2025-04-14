@@ -1,0 +1,69 @@
+.keyboard-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  user-select: none;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.key {
+  min-width: 40px;
+  height: 58px;
+  border-radius: 4px;
+  border: none;
+  background-color: #d3d6da;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #1a1a1b;
+  transition: all 0.2s ease;
+}
+
+.key:hover {
+  background-color: #c0c3c8;
+}
+
+.key:active {
+  background-color: #afb2b8;
+  transform: scale(0.95);
+}
+
+.special-key {
+  min-width: 65px;
+  font-size: 12px;
+}
+
+/* Status classes - same as in row component */
+.correct {
+  background-color: #6aaa64 !important; /* Green for correct letters */
+  color: white;
+}
+
+.wrong-position {
+  background-color: #c9b458 !important; /* Yellow for right letters in wrong position */
+  color: white;
+}
+
+.not-found {
+  background-color: #787c7e !important; /* Gray for letters not in word */
+  color: white;
+}
+
+.backspace-icon {
+  font-size: 20px;
+}

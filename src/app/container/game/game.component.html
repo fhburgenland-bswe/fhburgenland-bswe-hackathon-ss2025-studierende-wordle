@@ -1,0 +1,54 @@
+<!-- game.component.html -->
+<div
+  class="container-fluid d-flex flex-column align-items-center justify-content-center pt-5"
+>
+  <app-row
+    *ngFor="let rowIndex of rows"
+    [disableInputs]="isRowDisabled(rowIndex)"
+    (guess)="rowIndex === currentRow ? guessed($event) : null"
+    [word]="word"
+    [currentRow]="rowIndex"
+  ></app-row>
+
+  <div class="game-over-message">
+    <div *ngIf="easterEggActivate" class="game-over-message text-center">
+      <h1>YOU ARE RIGHT!</h1>
+    </div>
+
+    <div *ngIf="victory" class="game-over-message text-center">
+      <h3>You won!</h3>
+    </div>
+  </div>
+
+  <div class="game-over-message">
+    <div *ngIf="gameOver" class="game-over-message text-center">
+      <h3>Game Over!</h3>
+      <p>The word was: {{ word }}</p>
+    </div>
+
+    <div *ngIf="victory" class="game-over-message text-center">
+      <h3>You won!</h3>
+    </div>
+
+    <div class="m-3">
+      <button
+        class="btn btn-primary mx-2"
+        (click)="resetGame(true)"
+        *ngIf="victory"
+      >
+        Continue
+      </button>
+
+      <button class="btn btn-secondary mx-2" (click)="resetGame(false)">
+        New Game
+      </button>
+    </div>
+  </div>
+
+  <app-score [score]="score"></app-score>
+  <app-keyboard
+    [letterStatuses]="keyboardLetterStatuses"
+    (keyPressed)="handleKeyPress($event)"
+  >
+  </app-keyboard>
+</div>

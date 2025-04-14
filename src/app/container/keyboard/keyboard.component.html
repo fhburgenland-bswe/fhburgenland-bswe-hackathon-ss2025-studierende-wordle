@@ -1,0 +1,19 @@
+<div class="keyboard-container">
+  <div class="keyboard">
+    <div *ngFor="let row of keyboardRows" class="keyboard-row">
+      <button
+        *ngFor="let key of row"
+        class="key"
+        [ngClass]="[getKeyClass(key), getSpecialKeyClass(key)]"
+        (click)="handleKeyClick(key)"
+      >
+        <ng-container *ngIf="key !== 'BACKSPACE'; else backspace">
+          {{ key }}
+        </ng-container>
+        <ng-template #backspace>
+          <span class="backspace-icon">&#9003;</span>
+        </ng-template>
+      </button>
+    </div>
+  </div>
+</div>

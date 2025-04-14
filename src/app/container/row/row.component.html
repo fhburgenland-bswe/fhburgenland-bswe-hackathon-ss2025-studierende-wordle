@@ -1,0 +1,18 @@
+<!-- row.component.html -->
+<form [formGroup]="letterForm">
+  <div class="d-flex" formArrayName="letterArray">
+    <div *ngFor="let control of letterControls; let i = index">
+      <input
+        onkeydown="return /[a-z]/i.test(event.key)"
+        [formControlName]="i"
+        id="row{{ currentRow }}ltr{{ i }}"
+        type="text"
+        maxlength="1"
+        [readOnly]="disableInputs"
+        (keyup)="change($event, i)"
+        [ngClass]="getLetterClass(i)"
+        class="letter-input"
+      />
+    </div>
+  </div>
+</form>
